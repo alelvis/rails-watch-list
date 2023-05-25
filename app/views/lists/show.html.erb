@@ -1,8 +1,8 @@
 <div class="container">
-  <h1><%= "#{@list.name} - Rating: #{@reviews.map(&:rating).sum.to_f/@reviews.size}/5" %></h1>
-  <ul>
+  <h1><%= @list.name %> - <%= to_stars(@list.avg_rating) %></h1>
+  <ul class='list-group'>
     <% @bookmarks.each do |bookmark| %>
-      <li>
+      <li class='list-group-item'>
         <%= "#{bookmark.movie.title} - Rating: #{bookmark.movie.rating}/10" %>
         <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete}, class: 'btn' do %>
           <i class="fa-solid fa-trash trash"></i>

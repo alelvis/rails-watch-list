@@ -5,4 +5,8 @@ class List < ApplicationRecord
 
   validates :name, uniqueness: true
   validates :name, presence: true
+
+  def avg_rating
+    reviews.map(&:rating).sum.to_f/reviews.size
+  end
 end

@@ -1,10 +1,18 @@
 <div class='container'>
-  <h1>Your movie lists</h1>
-  <ul>
+  <h1 class='text-center'>Your movie lists</h1>
+  <ul class='list-group'>
     <% @lists.each do |list| %>
-      <li><%= link_to list.name, list_path(list) %></li>
+      <li class='list-group-item'><%= link_to list.name, list_path(list) %></li>
     <% end %>
   </ul>
 
   <%= link_to "Create new List", new_list_path, class: 'btn btn-primary'%>
+
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit class: 'btn btn-primary'%>
+  <% end %>
+
+  <%= link_to "Back", lists_path, class: 'btn btn-secondary'%>
+
 </div>
