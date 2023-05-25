@@ -1,16 +1,37 @@
 <div class="container">
-  <ul>
+  <h1 class='text-center mb-3'>Add a movie to <%= @list.name %> </h1>
+  <div class="row">
     <% Movie.all.each do |movie| %>
-      <li>
-        <%= "#{movie.title} - Rating: #{movie.rating}/10" %>
-          <%= simple_form_for([@list, @bookmark]) do |f| %>
-            <%= f.input :comment %>
-            <%= f.hidden_field :movie_id, :value => movie.id %>
-            <%= f.submit "Add", class: 'btn btn-primary' %>
-          <% end %>
-      </li>
-    <% end %>
-  </ul>
+
+      <div class="col-12 col-md-6" >
+        <div class="card p-2 mb-2">
+          <div class="row g-0">
+            <div class="col-5">
+              <%= image_tag movie.poster_url, class: "card-img-top"%>
+            </div>
+            <div class="col-7">
+              <div class="card-body">
+                <h5 class="card-title"><strong><%= movie.title %></strong></h5>
+                <p class="card-text"><%= "#{movie.rating}/10" %></p>
+                <p class="card-text movie-overview"><%= "#{movie.overview}" %></p>
+                  <%= simple_form_for([@list, @bookmark]) do |f| %>
+                    <div class="row g-0">
+                      <%= f.hidden_field :movie_id, :value => movie.id %>
+                        <div class="col-7">
+                          <%= f.input :comment, placeholder: "notes", label: false %>
+                        </div>
+                        <div class="col-5">
+                          <%= f.submit "Add to List", class: 'btn btn-primary w-100 add-to-list' %>
+                        </div>
+                    </div>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  </div>
 
   <%= link_to "Back", list_path(@list), class: 'btn btn-secondary' %>
 

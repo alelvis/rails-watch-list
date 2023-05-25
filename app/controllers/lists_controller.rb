@@ -19,6 +19,8 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @bookmarks = @list.bookmarks.all
+    @review = Review.new
+    @reviews = @list.reviews.all
   end
 
   private

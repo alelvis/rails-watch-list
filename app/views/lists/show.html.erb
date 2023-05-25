@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @list.name %></h1>
+  <h1><%= "#{@list.name} - Rating: #{@reviews.map(&:rating).sum.to_f/@reviews.size}/5" %></h1>
   <ul>
     <% @bookmarks.each do |bookmark| %>
       <li>
@@ -14,4 +14,16 @@
   <%= link_to "Add Movie to list", new_list_bookmark_path(@list), class: 'btn btn-primary' %>
 
   <%= link_to "Back", lists_path, class: 'btn btn-secondary' %>
+
+  <%= simple_form_for([@list, @review]) do |f| %>
+    <%= f.input :comment %>
+    <%= f.input :rating %>
+    <%= f.submit class: 'btn btn-dark'%>
+  <% end %>
+
+  <ul class='list-group'>
+    <% @reviews.each do |review| %>
+       <li class='list-group-item'><%= "#{review.rating}/5 - #{review.comment}" %></li>
+    <% end %>
+  </ul>
 </div>
