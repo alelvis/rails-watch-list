@@ -1,5 +1,9 @@
+<%= render "shared/banner" do %>
+  <h1>Add movie to your list!</h1>
+    <input class="search-bar" placeholder="Movie name"/>
+<% end %>
+
 <div class="container">
-  <h1 class='text-center mb-3'>Add a movie to <%= @list.name %> </h1>
   <div class="row">
     <% Movie.all.each do |movie| %>
 
@@ -38,3 +42,22 @@
   <%= link_to "Back", list_path(@list), class: 'btn btn-secondary' %>
 
 </div>
+
+<script>
+  const search_bar = document.querySelector('.search-bar');
+  search_bar.addEventListener( "keyup", () => {
+    const query = search_bar.value;
+    console.log(query);
+    document.querySelectorAll('.card').forEach ((card) => {
+      const movieName = card.querySelector('.card-title').innerText.toLowerCase()
+      if(movieName.includes(query)) {
+        card.style.display = "block";
+        card.style.visibility = "visible";
+      }
+      else {
+        card.style.display = "none";
+        card.style.visibility = "hidden";
+      }
+    })
+  })
+</script>
