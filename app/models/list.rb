@@ -7,6 +7,8 @@ class List < ApplicationRecord
   validates :name, presence: true
 
   def avg_rating
+    return 0 if reviews.empty?
+
     reviews.map(&:rating).sum.to_f/reviews.size
   end
 end

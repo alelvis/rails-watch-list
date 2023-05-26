@@ -12,7 +12,7 @@
             <div class="col-7">
               <div class="card-body">
                 <h5 class="card-title"><strong><%= movie.title %></strong></h5>
-                <p class="card-text"><%= "#{movie.rating}/10" %></p>
+                <h6><%= to_ten_stars(movie.rating) %><strong> <%=movie.rating%>/10 </strong><h6>
                 <p class="card-text movie-overview"><%= "#{movie.overview}" %></p>
                   <%= simple_form_for([@list, @bookmark]) do |f| %>
                     <div class="row g-0">

@@ -1,5 +1,5 @@
 module ListsHelper
-  def to_stars(rating)
+  def to_five_stars(rating)
     string = ""
     int = rating.to_i
     frac = (rating - int) >= 0.5 ? 1 : 0

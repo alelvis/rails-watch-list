@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @list.name %> - <%= to_stars(@list.avg_rating) %></h1>
+  <h1><%= @list.name %> - <%= to_five_stars(@list.avg_rating) %></h1>
   <ul class='list-group'>
     <% @bookmarks.each do |bookmark| %>
       <li class='list-group-item'>
