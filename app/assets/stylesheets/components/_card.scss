@@ -1,10 +1,21 @@
 .card {
+  padding: 1rem !important;
+}
+
+.card-body {
+  padding: 0px 1rem !important;
+  height: 100%;
+}
+
+.card-body h6 {
+  margin-bottom: 0px;
 }
 
 .movie-overview {
   overflow: scroll;
   height: 150px;
 }
+
 
 // .add-to-list {
 //   font-size: 100%;
